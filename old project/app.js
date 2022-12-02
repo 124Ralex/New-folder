@@ -16,4 +16,4 @@ Array.from(btns).forEach(function(btn)){
 
         e.preventDefault(); 
         console.log('navigation',e.target.textcontent,'was prevented');
-    })
+    });
