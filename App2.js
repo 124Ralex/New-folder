@@ -1,7 +1,7 @@
-const list = document.querySelector('#book-list ul');
+const list = document.querySelector('#Task-list ul');
 const forms = document.forms;
 
-// delete books
+// delete Task
 list.addEventListener('click', (e) => {
   if(e.target.className == 'delete'){
     const li = e.target.parentElement;
@@ -9,32 +9,32 @@ list.addEventListener('click', (e) => {
   }
 });
 
-// add books
-const addForm = forms['add-book'];
+// add Tasks
+const addForm = forms['add-Task'];
 addForm.addEventListener('submit', function(e){
   e.preventDefault();
 
   // create elements
   const value = addForm.querySelector('input[type="text"]').value;
   const li = document.createElement('li');
-  const bookName = document.createElement('span');
+  const TaskName = document.createElement('span');
   const deleteBtn = document.createElement('span');
 
   // add text content
-  bookName.textContent = value;
+  TaskName.textContent = value;
   deleteBtn.textContent = 'delete';
 
   // add classes
-  bookName.classList.add('name');
+  TaskName.classList.add('name');
   deleteBtn.classList.add('delete');
 
   // append to DOM
-  li.appendChild(bookName);
+  li.appendChild(TaskName);
   li.appendChild(deleteBtn);
   list.appendChild(li);
 });
 
-// hide books
+// hide Task
 const hideBox = document.querySelector('#hide');
 hideBox.addEventListener('change', function(e){
   if(hideBox.checked){
@@ -43,17 +43,17 @@ hideBox.addEventListener('change', function(e){
     list.style.display = "initial";
   }
 });
-const searchBar = document.forms['search-books'].querySelector('input');
+const searchBar = document.forms['search-Task'].querySelector('input');
 searchBar.addEventListener('keyup', function(e){
 const term = e.target.value.toLowerCase();
-const books = list.getElementsByTagName('li');
-Array.from(books).forEach(function(book){
-const title = book.firstElementChild.textContent;
+const Task = list.getElementsByTagName('li');
+Array.from(Task).forEach(function(Task){
+const title = Task.firstElementChild.textContent;
 if(title.toLowerCase().indexOf(term)!=-1){
-  book.style.display = "block";
+  Task.style.display = "block";
   
 }else {
-  book.style.display= "none";
+  Task.style.display= "none";
 }
 })
 });
